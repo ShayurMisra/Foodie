@@ -1,0 +1,458 @@
+/*index.html*/
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+}
+
+/* Video Background */
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+#background-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Content Container */
+.content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+/* Navbar */
+.navbar {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: rgb(0, 0, 0);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center; /* Align links vertically */
+}
+
+.nav-links a {
+    margin-right: 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: transform 0.3s;
+}
+
+.nav-links a:hover {
+    transform: scale(1.1);
+}
+
+/* Menu Button */
+.menu-btn {
+    display: none; /* Hide the menu button by default */
+    font-size: 24px;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.menu-btn:hover {
+    transform: scale(1.1);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px; /* Adjust padding for smaller screens */
+    }
+
+    .nav-links {
+        flex-direction: column; /* Stack links vertically */
+        display: none; /* Initially hidden */
+        background-color: rgb(0, 0, 0);
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        position: absolute;
+        top: 100%; /* Position below the navbar */
+        left: 0;
+        z-index: 1000; /* Ensure it's above other content */
+    }
+
+    .nav-links.show {
+        display: flex; /* Show the links when the menu is clicked */
+    }
+
+    .nav-links a {
+        margin: 10px 0; /* Adjust link spacing */
+    }
+
+    .menu-btn {
+        display: block; /* Show the menu button on smaller screens */
+    }
+
+    /* Hide the links when menu button is active */
+    .menu-btn.active ~ .nav-links {
+        display: flex;
+    }
+}
+
+.site-logo-name {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    margin-left: 25px;
+}
+
+.site-name {
+    font-size: 36px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+/* Slogan */
+.slogan {
+    font-size: 46px;
+    font-weight: bold;
+    margin-top: 9%;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Search By */
+.search-by {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 20px;
+}
+
+/* Buttons */
+.buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    transition: transform 0.3s, background 0.3s;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 1);
+}
+
+/* Search Bar */
+#searchForm {
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+#searchBar {
+    width: 100%;
+    max-width: 500px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    flex: 1;
+}
+
+#searchForm button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#searchForm button:hover {
+    background-color:  #60059d;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    #searchBar {
+        font-size: 16px;
+    }
+
+    #searchForm button {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    #searchForm {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    #searchBar, #searchForm button {
+        width: 100%;
+        max-width: none;
+        font-size: 14px;
+    }
+
+    #searchForm button {
+        padding: 8px 0;
+    }
+}
+
+/* Featured Section */
+.featured-section {
+    background: rgb(0, 0, 0);
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.featured-section h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.featured-recipes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.featured-recipes .recipe {
+    flex: 1 1 300px;
+    max-width: 300px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.featured-recipes .recipe img {
+    width: 100%;
+    height: auto;
+}
+
+.featured-recipes .recipe p {
+    padding: 10px;
+    font-size: 1.1em;
+}
+
+.featured-recipes .recipe:hover {
+    transform: scale(1.1);
+}
+
+/* Responsive Styles */
+@media (min-width: 768px) {
+    .featured-recipes {
+        justify-content: space-around;
+    }
+
+    .featured-recipes .recipe {
+        flex: 1 1 45%;
+        max-width: 45%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .featured-recipes .recipe {
+        flex: 1 1 30%;
+        max-width: 30%;
+    }
+}
+
+/* Footer Section */
+.footer-section {
+    background: black;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.footer-content p {
+    margin: 5px 0;
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    overflow-y: auto;
+    max-height: 80%;
+}
+
+.close-btn {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*upload.html*/
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+}
+
+.site-logo-name {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    margin-left: 25px;
+}
+
+.site-name {
+    font-size: 36px;
+    font-weight: bold;
+    margin-left: 20px;
+    color: white;
+}
+
+/* Form Container */
+.form-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 60px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.form-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="file"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+    border-color: #000000;
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button[type="submit"] {
+    padding: 15px;
+    background-color: #090909;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #60059d;
+}

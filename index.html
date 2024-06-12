@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>foodie</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="video-background">
+        <video autoplay muted loop id="background-video">
+            <source src="Index Images/The Heavy Hitting Burger.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="content">
+        <!-- Navigation Bar -->
+        <nav class="navbar">
+            <div class="site-logo-name">
+                <img src="Index Images/Logo.png" alt="Logo" class="logo">
+                <div class="site-name">foodie</div>
+            </div>
+            <button class="menu-btn">&#9776;</button>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="upload.html">Upload a Recipe</a>
+            </div>
+        </nav>
+        <div class="slogan">Where every flavor tells a story.</div>
+        <div class="search-by">Search by...</div>
+        <div class="buttons">
+            <button class="btn">Cuisine</button>
+            <button class="btn">Ingredients</button>
+            <button class="btn" id="exploreBtn">Explore</button>
+        </div>
+    
+        <div class="all-recipes-section" style="display:none;">
+            <h2>All Recipes</h2>
+            <div class="all-recipes"></div>
+        </div>
+
+        <div class="search-by">Or...</div>
+        <form id="searchForm">
+            <input type="text" id="searchBar" class="search-bar" placeholder="Search for recipes...">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <!-- Featured Section -->
+    <div class="featured-section">
+        <h2>Featured</h2>
+        <div class="featured-recipes">
+            <div class="recipe" data-recipe="1">
+                <img src="Recipe Images/ChiliGarlicPaneer.jpg" alt="Chili Garlic (Homemade) Paneer">
+                <p>Chili Garlic (Homemade) Paneer</p>
+            </div>
+            <div class="recipe" data-recipe="2">
+                <img src="Recipe Images/triple-dipped-fried-chicken.jpg" alt="Triple-Dipped Fried Chicken">
+                <p>Triple-Dipped Fried Chicken</p>
+            </div>
+            <div class="recipe" data-recipe="3">
+                <img src="Recipe Images/Pork Gyoza.jpg" alt="Pork Gyoza">
+                <p>Pork Gyoza</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer-section">
+        <div class="footer-content">
+            <p>&copy; 2024 foodie. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Recipe Modal -->
+    <div id="recipeModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <img id="modalRecipeImage" src="" alt="Recipe Image" style="width: 100%; height: auto;">
+            <div id="recipeDetails">
+                <p><strong>Prep Time:</strong> <span id="prepTime"></span></p>
+                <p><strong>Cook Time:</strong> <span id="cookTime"></span></p>
+                <p><strong>Total Time:</strong> <span id="totalTime"></span></p>
+                <p><strong>Servings:</strong> <span id="servings"></span></p>
+            </div>
+            <h2 id="modalRecipeName"></h2>
+            <p id="modalRecipeDescription"></p>
+            <h3>Ingredients</h3>
+            <ul id="modalRecipeIngredients"></ul>
+            <h3>Instructions</h3>
+            <ol id="modalRecipeInstructions"></ol>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
