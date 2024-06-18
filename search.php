@@ -1,30 +1,22 @@
 <?php
-$servername = "localhost";
-$username = "root"; 
-$password = "12345"; 
-$dbname = "foodie";
+include 'config.php';
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$search = $_GET['search'];
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+$query = "SELECT * FROM recipes WHERE Name LIKE ? OR Ingredients LIKE ?";
+$stmt = $conn->prepare($query);
+$search_param = "%" . $search . "%";
+$stmt->bind_param("ss", $search_param, $search_param);
+$stmt->execute();
+$result = $stmt->get_result();
+
+while ($row = $result->fetch_assoc()) {
+    echo "<div class='recipe'>";
+    echo "<img src='" . $row['Image'] . "' alt='Recipe Image'>";
+    echo "<p>" . $row['Name'] . "</p>";
+    echo "</div>";
 }
 
-if (isset($_GET['query'])) {
-    $query = $_GET['query'];
-    $sql = "SELECT * FROM recipes WHERE Name LIKE '%$query%' OR Cuisine LIKE '%$query%' OR Ingredients LIKE '%$query%'";
-    $result = $conn->query($sql);
-
-    $recipes = array();
-    if ($result->num_rows > 0) {
-        while($row = $result->fetch_assoc()) {
-            $recipes[] = $row;
-        }
-    }
-    echo json_encode($recipes);
-}
-
+$stmt->close();
 $conn->close();
 ?>
